@@ -12,12 +12,6 @@ import Foundation
 
 var gameButton = GameButton()
 
-enum winning {
-    case player1
-    case player2
-    case tie
-    case noWinner
-}
 
 
 class TicTacToeBrain {
@@ -42,10 +36,10 @@ class TicTacToeBrain {
     
     func winConditions () {
         for row in gameBoard {
-            if row == ["o","o","o"] {
+            if row == ["x","x","x"] {
                 victory1 = true
                 break
-            } else if row == ["x","x","x"] {
+            } else if row == ["o","o","o"] {
                 victory2 = true
                 break
                 
@@ -56,10 +50,10 @@ class TicTacToeBrain {
             var column = [String]()
             for rowNum in 0...gameBoard.count - 1 {
                 column.append(gameBoard[rowNum][columnNum])
-                if column == ["o","o","o"] {
+                if column == ["x","x","x"] {
                     victory1 = true
                     break
-                } else if column == ["x","x","x"] {
+                } else if column == ["o","o","o"] {
                     victory2 = true
                     break
                 }
@@ -68,10 +62,10 @@ class TicTacToeBrain {
         var diagonalRight = [String]()
         for value in 0..<gameBoard.count {
             diagonalRight.append(gameBoard[value][value])
-            if diagonalRight == ["o","o","o"] {
+            if diagonalRight == ["x","x","x"] {
                 victory1 = true
                 break
-            } else if diagonalRight == ["x","x","x"] {
+            } else if diagonalRight == ["o","o","o"] {
                 victory2 = true
                 break
             }
@@ -79,10 +73,10 @@ class TicTacToeBrain {
             var diagonalLeft = [String]()
             for value in 0..<gameBoard.count {
                 diagonalLeft.append(gameBoard[value][gameBoard.count - 1 - value])
-                if diagonalLeft == ["o","o","o"] {
+                if diagonalLeft == ["x","x","x"] {
                     victory1 = true
                     break
-                } else if diagonalLeft == ["x","x","x"] {
+                } else if diagonalLeft == ["o","o","o"] {
                     victory2 = true
                     break
                 }
@@ -94,7 +88,15 @@ class TicTacToeBrain {
         }
         
     }
-    
+    func reset() {
+        gameBoard = [["","",""],
+                     ["","",""],
+                     ["","",""]]
+        victory1 = false
+        victory2 = false
+        playerTurn = false
+        turnCount = 0
+    }
   
     
     

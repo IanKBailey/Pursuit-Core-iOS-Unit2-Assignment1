@@ -40,6 +40,10 @@ class ViewController: UIViewController {
             gameBrain.winConditions()
             if gameBrain.victory1 {
                 playerTurn.text = "Player 1 wins"
+                buttons.forEach{$0.isEnabled = false}
+            } else if gameBrain.tie {
+                playerTurn.text = "TIE"
+                buttons.forEach{$0.isEnabled = false}
             }
             
         } else {
@@ -49,6 +53,10 @@ class ViewController: UIViewController {
             gameBrain.winConditions()
             if gameBrain.victory2 {
                 playerTurn.text = "Player 2 Wins"
+                buttons.forEach{$0.isEnabled = false}
+            } else if gameBrain.tie {
+                playerTurn.text = "TIE"
+                buttons.forEach{$0.isEnabled = false}
             }
         }
         
@@ -56,8 +64,11 @@ class ViewController: UIViewController {
     }
    
     @IBAction func reset(_ sender: UIButton) {
-        
-        
+        gameBrain.reset()
+        buttons.forEach{$0.setImage(nil, for: .normal)}
+        buttons.forEach{$0.isEnabled = true}
+        playerTurn.text = ""
+       
     }
     
     
