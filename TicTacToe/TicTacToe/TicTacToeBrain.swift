@@ -95,6 +95,7 @@ class TicTacToeBrain {
         victory1 = false
         victory2 = false
         playerTurn = false
+        tie = false
         turnCount = 0
     }
   
